@@ -21,7 +21,8 @@ class ProgressStatus(models.Model):
     SOIstatus = models.CharField(max_length=50, null=True)
     FTBstatus = models.CharField(max_length=50, null=True)
     questionnairestatus = models.CharField(max_length=50, null=True)
-    bookkeepingsetupstatus = models.CharField(max_length=50, choices=Status.choices, null=True)
+    bookkeepingsetupstatus = models.CharField(
+        max_length=50, choices=Status.choices, null=True)
     taxsetupstatus = models.CharField(max_length=50, null=True)
     clientsurveystatus = models.CharField(max_length=50, null=True)
     bk_services_setup_status = models.CharField(
@@ -78,14 +79,17 @@ class StatusEngine(models.Model):
         HYKE_DAILY = "Hyke Daily"
         HYKE_SYSTEM = "Hyke System"
         HYKE_SALESFORCE = "Hyke Salesforce"
+
     class ProcessState(models.IntegerChoices):
         PENDING = 1
         COMPLETED = 2
 
     email = models.CharField(max_length=50, blank=True)
     process = models.CharField(max_length=100, choices=Process.choices)
-    formationtype = models.CharField(max_length=20, choices=FormationType.choices, null=True)
-    processstate = models.IntegerField(choices=ProcessState.choices, default=ProcessState.PENDING)
+    formationtype = models.CharField(
+        max_length=20, choices=FormationType.choices, null=True)
+    processstate = models.IntegerField(
+        choices=ProcessState.choices, default=ProcessState.PENDING)
     outcome = models.IntegerField(
         choices=Status.choices, default=Status.SCHEDULED)
     data = models.CharField(max_length=1000, null=True)

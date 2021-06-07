@@ -21,3 +21,17 @@ Rather than grading you on your level of completion, this exercise is designed t
 - Help us understand the technical value you can bring to the team.
 
 > ### Disclaimer: **None of your code will be used for anything other than this discussion.**
+
+## Refactor
+
+### Models:
+- Updated status-related fields using choices
+- Updated & added choices classes
+- Replaced those meaningless default values `default="---"` to `null=True`
+
+### Jobs System:
+- Created `ProcessFactory` class to register & run items based on its `process` value.
+- Extracted all processing implementations from `scheduled_system` function into separate processing handler functions
+- Moved all constants to `models.py` and updated their usages in `jobs_system.py`
+- Added exception handlers where necessary.
+- Removed unnecessary conditions
